@@ -20,7 +20,7 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/distributions-io/exponential.git"
+    "url": "git://github.com/distributions-io/uniform.git"
   },
   "keywords": [
     "distributions.io",
@@ -33,7 +33,7 @@
     "uniform"
   ],
   "bugs": {
-    "url": "https://github.com/distributions-io/exponential/issues"
+    "url": "https://github.com/distributions-io/uniform/issues"
   },
   "dependencies": {
     "dstructs-matrix": "^2.0.0",

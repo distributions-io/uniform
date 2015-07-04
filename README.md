@@ -8,7 +8,7 @@ uniform
 ## Installation
 
 ``` bash
-$ npm install distributions-exponential
+$ npm install distributions-uniform
 ```
 
 For use in the browser, use [browserify](https://github.com/substack/node-browserify).
@@ -240,20 +240,20 @@ $ open reports/coverage/lcov-report/index.html
 
 Copyright &copy; 2015. The [Distributions.io](https://github.com/distributions-io) Authors.
 
-[npm-image]: http://img.shields.io/npm/v/distributions-exponential.svg
-[npm-url]: https://npmjs.org/package/distributions-exponential
+[npm-image]: http://img.shields.io/npm/v/distributions-uniform.svg
+[npm-url]: https://npmjs.org/package/distributions-uniform
 
-[travis-image]: http://img.shields.io/travis/distributions-io/exponential/master.svg
-[travis-url]: https://travis-ci.org/distributions-io/exponential
+[travis-image]: http://img.shields.io/travis/distributions-io/uniform/master.svg
+[travis-url]: https://travis-ci.org/distributions-io/uniform
 
-[coveralls-image]: https://img.shields.io/coveralls/distributions-io/exponential/master.svg
-[coveralls-url]: https://coveralls.io/r/distributions-io/exponential?branch=master
+[coveralls-image]: https://img.shields.io/coveralls/distributions-io/uniform/master.svg
+[coveralls-url]: https://coveralls.io/r/distributions-io/uniform?branch=master
 
-[dependencies-image]: http://img.shields.io/david/distributions-io/exponential.svg
-[dependencies-url]: https://david-dm.org/distributions-io/exponential
+[dependencies-image]: http://img.shields.io/david/distributions-io/uniform.svg
+[dependencies-url]: https://david-dm.org/distributions-io/uniform
 
-[dev-dependencies-image]: http://img.shields.io/david/dev/distributions-io/exponential.svg
-[dev-dependencies-url]: https://david-dm.org/dev/distributions-io/exponential
+[dev-dependencies-image]: http://img.shields.io/david/dev/distributions-io/uniform.svg
+[dev-dependencies-url]: https://david-dm.org/dev/distributions-io/uniform
 
-[github-issues-image]: http://img.shields.io/github/issues/distributions-io/exponential.svg
-[github-issues-url]: https://github.com/distributions-io/exponential/issues
+[github-issues-image]: http://img.shields.io/github/issues/distributions-io/uniform.svg
+[github-issues-url]: https://github.com/distributions-io/uniform/issues
