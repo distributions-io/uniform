@@ -1,0 +1,13 @@
+# Directories #
+###############
+build/
+reports/
+dist/
+
+# Node.js #
+###########
+/node_modules/
+
+# Git #
+#######
+.git*
