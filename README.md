@@ -152,7 +152,7 @@ var quantiles = dist.quantile( probs );
 // returns [...]
 ```
 
-Note: all values must exist on the interval `[0, 1]`, otherwise the function returns `NaN`.
+Note: all values must exist on the interval `[0, 1]`. The function returns `NaN` for a value not satisfying this condition.
 
 #### dist.mgf( [t] )
 
@@ -162,8 +162,6 @@ If no argument is provided, returns the moment generating function (MGF) of the 
 ## Examples
 
 ``` javascript
-'use strict';
-
 var createDist = require( 'distributions-uniform' );
 
 // Define the distribution parameters...
