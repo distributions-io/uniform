@@ -143,7 +143,7 @@ var cdf = dist.cdf( data );
 
 #### dist.quantile( [p] )
 
-If no argument is provided, returns the inverse cumulative distribution (quantile) function. If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) of probabilities is provided, evaluates the quantile function for each element.
+If no argument is provided, returns the quantileerse cumulative distribution (quantile) function. If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) of probabilities is provided, evaluates the quantile function for each element.
 
 ``` javascript
 var probs = [ 0.025, 0.5, 0.975 ];
@@ -189,7 +189,7 @@ for ( var j = 0; j < arr.length; j++ ) {
 console.log( arr );
 
 // Evaluate the quantile function for canonical cumulative probability values...
-var quantiles = dist.inv( [ 0.025, 0.5, 0.975 ] );
+var quantiles = dist.quantile( [ 0.025, 0.5, 0.975 ] );
 
 console.log( quantiles );
 
@@ -240,7 +240,7 @@ $ open reports/coverage/lcov-report/index.html
 
 Copyright &copy; 2015. The [Distributions.io](https://github.com/distributions-io) Authors.
 
-[npm-image]: http://img.shields.io/npm/v/distributions-uniform.svg
+	[npm-image]: http://img.shields.io/npm/v/distributions-uniform.svg
 [npm-url]: https://npmjs.org/package/distributions-uniform
 
 [travis-image]: http://img.shields.io/travis/distributions-io/uniform/master.svg
