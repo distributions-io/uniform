@@ -1,4 +1,4 @@
-exponential
+uniform
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
@@ -26,16 +26,18 @@ To create a uniform distribution,
 var dist = createDist();
 ```
 
+The constructor function takes two input arguments, `a` and `b`, the lower and upper endpoints of the distribution. By default, a standard uniform distribution over the interval `[0,1]` is created.
+
 The distribution is configurable and has the following methods...
 
 
 #### dist.support()
 
-Returns the distribution support, which is all positive real numbers and 0.
+Returns the distribution support, which is all numbers in the interval `[a,b]`.
 
 ``` javascript
 var support = dist.support();
-// returns [ 0, +inf ]
+// returns [ a, b ]
 ```
 
 
@@ -47,7 +49,7 @@ This method is a setter/getter. If no `value` is provided, returns the `minimum 
 dist.a( 10 );
 ```
 
-The default minimum is 1.
+The default minimum value is 1.
 
 #### dist.b( [value] )
 
@@ -57,7 +59,7 @@ This method is a setter/getter. If no `value` is provided, returns the `maximum 
 dist.b( 100 );
 ```
 
-The default maximum is 1.
+The default maximum value is 1.
 
 #### dist.mean()
 
@@ -65,7 +67,7 @@ Returns the distribution `mean`.
 
 ``` javascript
 var mean = dist.mean();
-// returns 1/rate
+// returns 0.5 * ( a + b )
 ```
 
 
@@ -75,6 +77,7 @@ Returns the distribution `variance`.
 
 ``` javascript
 var variance = dist.variance();
+// returns (1/12) * (b - a)^2
 ```
 
 
@@ -84,6 +87,7 @@ Returns the distribution `median`.
 
 ``` javascript
 var median = dist.median();
+// returns 0.5 * ( a + b )
 ```
 
 #### dist.skewness()
@@ -92,7 +96,7 @@ Returns the distribution `skewness`.
 
 ``` javascript
 var skewness = dist.skewness();
-// returns 2
+// returns 0
 ```
 
 #### dist.ekurtosis()
@@ -101,7 +105,7 @@ Returns the distribution `excess kurtosis`.
 
 ``` javascript
 var excess = dist.ekurtosis();
-// returns 6
+// returns -6/5
 ```
 
 #### dist.entropy()
@@ -110,44 +114,49 @@ Returns the distribution's [differential entropy](http://en.wikipedia.org/wiki/D
 
 ``` javascript
 var entropy = dist.entropy();
+// returns ln( b - a )
 ```
 
-#### dist.pdf( [arr] )
+#### dist.pdf( [x] )
 
-If a vector is not provided, returns the probability density function (PDF). If a vector is provided, evaluates the PDF for each vector element.
+If no argument is provided, returns the probability density function (PDF). If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the PDF for each element.
 
 ``` javascript
-var data = [ 0, 1, 10, 100, 1000 ];
+var data = [ 0, 0.2, 0.5, 0.8 ];
 
 var pdf = dist.pdf( data );
 // returns [...]
 ```
 
-#### dist.cdf( [arr] )
+#### dist.cdf( [x] )
 
-If a vector is not provided, returns the cumulative density function (CDF). If a vector is provided, evaluates the CDF for each vector element.
+If no argument is provided, returns the cumulative distribution function (CDF). If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the CDF for each element.
+
 
 ``` javascript
-var data = [ 0, 1, 10, 100, 1000 ];
+var data = [ 0, 0.2, 0.5, 0.8 ];
 
 var cdf = dist.cdf( data );
 // returns [...]
 ```
 
 
-#### dist.inv( [arr] )
+#### dist.quantile( [p] )
 
-If a cumulative probability vector is not provided, returns the inverse cumulative distribution (quantile) function. If a cumulative probability vector is provided, evaluates the quantile function for each vector element.
+If no argument is provided, returns the inverse cumulative distribution (quantile) function. If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) of probabilities is provided, evaluates the quantile function for each element.
 
 ``` javascript
 var probs = [ 0.025, 0.5, 0.975 ];
 
-var quantiles = dist.inv( probs );
+var quantiles = dist.quantile( probs );
 // returns [...]
 ```
 
-Note: all vector values must exist on the interval `[0, 1]`.
+Note: all values must exist on the interval `[0, 1]`, otherwise the function returns `NaN`.
 
+#### dist.mgf( [t] )
+
+If no argument is provided, returns the moment generating function (MGF) of the distribution. If a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix) is provided, evaluates the MGF for each input element.
 
 
 ## Examples
@@ -170,7 +179,7 @@ for ( var i = 0; i < len; i++ ) {
 }
 
 // Create a uniform distribution and configure...
-var dist = createDist().a( a ).b( b );
+var dist = createDist( a, b );
 
 // Evaluate the probability density function over the vector...
 var pdf = dist.pdf( vec );
